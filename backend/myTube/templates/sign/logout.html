@@ -1,0 +1,17 @@
+{% extends "head.html" %}
+
+{% block content %}
+
+<div class="form-page">
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <h2>Вы успешно вышли из системы!</h2>
+    <h4>Будем рады снова видеть <a href="{% url 'login' %}"><b>вас</b></a> на нашем сайте</h4>
+</div>
+
+{% endblock %}
