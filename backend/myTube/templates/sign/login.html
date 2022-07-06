@@ -2,24 +2,26 @@
 
 {% block content %}
 
-{% if request.user %}
-  <div class="form-page">
-    <div class="form">
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        {% endif %}
-        </ul>
-        <form action="" method="post">
-            {% csrf_token %}
-            <input type="text" placeholder="Username" name="username">
-            <input type="password" placeholder="Password" name="password">
-            <button type="submit">Войти</button>
-        </form>
-    </div>
-  </div>
+    {% if request.user %}
+        <div class="form-page">
+            <div class="form">
+                {% if messages %}
+                    <ul class="messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                {% endif %}
+                </ul>
+                <div class="centered">
+                    <form action="" method="post" class="centered">
+                        {% csrf_token %}
+                        <input type="text" placeholder="Username" name="username" style="margin: 10px 0">
+                        <input type="password" placeholder="Password" name="password" style="margin: 10px 0">
+                        <button type="submit">Войти</button>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-  {% endif %}
+    {% endif %}
 {% endblock %}

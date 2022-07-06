@@ -1,0 +1,21 @@
+.avatar {
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    border: 2px solid #3b4151;
+    width: 100px;
+}
+
+.avatar img {
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    width: 97px;
+}
+
+.profile-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -11,10 +11,10 @@ class Author(models.Model):
 
 
 class Video(models.Model):
-    videoSource = models.FileField(upload_to='videos')
+    videoSource = models.FileField(upload_to='videos', null=True)
     videoHeader = models.CharField(max_length=64, default='')
     videoTitle = models.CharField(max_length=64, default='')
-    videoAuthor = models.ForeignKey(Author, on_delete=models.CASCADE)
+    videoAuthor = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)
     videoLikes = models.IntegerField(default=0)
     videoDisLikes = models.IntegerField(default=0)
     videoViews = models.IntegerField(default=0)

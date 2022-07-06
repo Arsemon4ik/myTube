@@ -1,0 +1,34 @@
+{% extends 'head.html' %}
+
+{#<div class="videos">#}
+    <!-- a video starts -->
+{% if videos %}
+     {% for video in videos %}
+        <div class="video">
+            <div class="thumbnail">
+                <img src="{{ video.videoThumb }}" alt="video">
+            </div>
+
+            <div class="details">
+                <div class="author">
+                    <img src=""
+                         alt=""/>
+                </div>
+                <div class="title">
+                    <h3>
+                        {{ video.videoHeader }}
+                    </h3>
+                    <a href="">
+                        Francesco Ciulla
+                    </a>
+                    <span> 2M Views • 3 Months Ago </span>
+                </div>
+            </div>
+
+        </div>
+    {% endfor %}
+{% else %}
+    <h1>No videos yet!</h1>
+{% endif %}
+
+{#</div>#}

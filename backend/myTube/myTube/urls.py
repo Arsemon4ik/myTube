@@ -17,11 +17,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include
-from django.urls import path
+from django.urls import path, re_path
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title='myTube API')
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('tube/', include('tube.urls')),
                   path('sign/', include('sign.urls')),
                   path('accounts/', include('allauth.urls')),
+                  path('chat/', include('chat.urls')),
+                  re_path(r'^swagger$', schema_view)
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

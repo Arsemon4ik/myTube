@@ -4,11 +4,10 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class User(AbstractUser):
-    name = models.CharField(max_length=200, default='')
     email = models.EmailField(unique=True)
-    phone = PhoneNumberField()
-    bio = models.TextField(null=True, default='')
-    avatar = models.ImageField(default='images/default.jpg', upload_to='avatars')
+    phone = PhoneNumberField(blank=True)
+    bio = models.TextField(blank=True, default='')
+    avatar = models.ImageField(default='static/default.jpg',upload_to='avatars', blank=True)
 
-    REQUIRED_FIELDS = ['email', 'phone']
+    REQUIRED_FIELDS = ['email']
     # REQUIRED_FIELDS = []
