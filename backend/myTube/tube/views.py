@@ -1,10 +1,3 @@
-from rest_framework import status
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-
-from .models import Video
-from .serializers import VideoSerializer
-
 # @api_view(['GET'])
 # def getRoutes(request):
 #     routes = [
@@ -58,15 +51,13 @@ from .serializers import VideoSerializer
 #         video.delete()
 #         return Response(status=status.HTTP_204_NO_CONTENT)
 
+from django.contrib import messages
 from django.shortcuts import render, redirect
-from sign.models import User
-from django.views.generic import TemplateView, ListView
-from .models import Video, Comment
+
+from .filters import VideoFilter
 # Create your views here.
 from .forms import *
-from random import randint
-from .filters import VideoFilter
-from django.contrib import messages
+from .models import Comment
 
 
 def indexPage(request):
@@ -157,16 +148,16 @@ def postUpdatePage(request, pk):
 
 
 def postDetailPage(request, pk):
-    post = Video.objects.get(id=pk)
-    comments = Comment.objects.filter(comment_post__id=post.id, comment_online=True)
+    video = Video.objects.get(id=pk)
+    comments = Comment.objects.filter(comment_post__id=video.id, comment_online=True)
     user = request.user
     if request.method == 'POST':
         if user.has_perm('tube.view_post'):
             comment = request.POST.get('text')
-            Comment.objects.create(comment_text=comment, comment_user=user, comment_post=post)
-            return redirect('post_detail', pk=post.id)
+            Comment.objects.create(comment_text=comment, comment_user=user, comment_post=video)
+            return redirect('post_detail', pk=video.id)
         else:
             messages.error("You don't have permission!")
 
-    context = {'comments': comments, 'post': post}
-    return render(request, 'tube/post_detail.html', context)
+    context = {'comments': comments, 'video': video}
+    return render(request, 'tube/videoDetail.html', context)

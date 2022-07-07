@@ -1,0 +1,42 @@
+{% extends 'head.html' %}
+
+{% block content %}
+    <div class="pageVideo">
+        {% if video %}
+            <div class="video">
+                <div class="thumbnail">
+                    <video
+                            width="640"
+                            height="264"
+                            poster="{{ video.videoThumb.url }}"
+                            id="my-video"
+                            class="video-js"
+                    >
+                        <source src="{{ video.videoSource.url }}" type="video/mp4"/>
+                    </video>
+                </div>
+
+                <div class="details">
+                    <div class="author">
+                        <img src="{{ video.videoAuthor.authorName.avatar.url }}"
+                             alt=""/>
+                    </div>
+                    <div class="title">
+                        <h3>
+                            {{ video.videoHeader }}
+                        </h3>
+                        <a href="">
+                            {{ video.videoAuthor.authorName|upper }}
+                        </a>
+                        <span> {{ video.videoViews }} • 3 Months Ago </span>
+                    </div>
+                </div>
+
+            </div>
+        {% else %}
+            <h1>No videos yet!</h1>
+        {% endif %}
+    </div>
+
+{% endblock %}
+

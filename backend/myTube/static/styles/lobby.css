@@ -6,8 +6,9 @@ body, html {
     background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
 }
 
-#form{
+#form {
     display: flex;
+    /*justify-content: space-between;*/
 }
 
 .chat {
@@ -58,13 +59,18 @@ body, html {
 }
 
 .type_msg {
-    background-color: rgba(0, 0, 0, 0.3) !important;
+    background-color: rgba(0, 0, 0, 0.1) !important;
     border: 0 !important;
-    color: white !important;
+    border-bottom-left-radius: 10px;
+    color: black !important;
     height: 60px !important;
     overflow-y: auto;
-    width: 400px;
+    /*width: 400px;*/
+    /*width: 80vw;*/
+    font-size: 25px;
+    padding: 0 0 0 10px;
 }
+
 
 .type_msg:focus {
     box-shadow: none !important;
@@ -117,7 +123,7 @@ body, html {
 
 }
 
-.user_img img{
+.user_img img {
     object-fit: contain;
 }
 
@@ -200,6 +206,7 @@ body, html {
     background-color: #78e08f;
     padding: 10px;
     position: relative;
+    font-size: 18px;
 }
 
 .msg_time {
@@ -268,5 +275,54 @@ body, html {
 @media (max-width: 576px) {
     .contacts_card {
         margin-bottom: 15px !important;
+    }
+}
+
+.containerr {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardd {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    border-radius: 10px;
+    width: 400px;
+    height: 500px;
+    /*height: 100%;*/
+}
+
+.inputt {
+    display: flex;
+    align-items: center;
+}
+
+.linkhome {
+    top: 0px;
+    left: 0px;
+    /*padding: 20px 10px;*/
+    border: 1px solid black;
+    transition: 0.2s ease-in-out;
+}
+
+.linkhome a {
+    outline: none;
+    text-decoration: none;
+    border: none;
+    font-size: x-large;
+    color: black;
+    cursor: pointer;
+    padding: 15px 15px;
+}
+
+
+.linkhome:hover {
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 734px ) {
+    .linkhome {
+        top: 80vh;
     }
 }

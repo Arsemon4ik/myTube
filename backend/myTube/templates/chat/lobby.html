@@ -12,58 +12,17 @@
     <link rel="stylesheet" href="{% static 'styles/lobby.css' %}">
     <title>Lobby</title>
 </head>
-{#<style>#}
-{#ul {#}
-{#    margin: 0;#}
-{#    padding: 0;#}
-{#    {#}
-{#    #}
-{#li {#}
-{#    list-style: none;#}
-{#    padding: 10px;#}
-{#    {#}
-{#    #}
-{##}
-{#input {#}
-{#    padding: 10px;#}
-{#    {#}
-{#    #}
-{##}
-{#.btn {#}
-{#    background: black;#}
-{#    color: white;#}
-{#    box-shadow: none;#}
-{#    border: 2px solid black;#}
-{#    {#}
-{#    #}
-{#</style>#}
 <body>
-
-{#    <h1>My chat</h1>#}
-{#    <form id="form">#}
-{#        <input type="text" name="message">#}
-{#    </form>#}
-
-{#    <h3>You: {{me.username}}</h3>#}
-{#    <h3>Thread: {{user.username}}</h3>#}
-{#    <ul>#}
-{#        {% for message in messages %}#}
-{#            <li>{{message.sender.username}}-> {{message.text}}</li>#}
-{#        {% endfor %}#}
-{#        <li id="messages"></li>#}
-{#    </ul>#}
-{#    <form action="" method="post" id="form">#}
-{#        {% csrf_token %}#}
-{#        <input type="text" name="message" id="message" required>#}
-{#        <input type="submit" value="Send" class="btn">#}
-{#    </form>#}
-<div class="container-fluid h-100">
-    <div class="col-md-8 col-xl-6 chat">
-        <div class="card">
+<div class="containerr">
+    <div class="linkhome" style="position: absolute">
+        <a href="{% url 'home' %}">Back Home</a>
+    </div>
+    <div class="chat">
+        <div class="cardd">
             <div class="card-header msg_head">
                 <div class="d-flex bd-highlight">
                     <div class="img_cont">
-                        <img src="{{ user.avatar.url }}"
+                        <img src="{{ user.avatar.url }}" alt="avatar"
                              class="rounded-circle user_img">
                         <span class="online_icon"></span>
                     </div>
@@ -71,16 +30,12 @@
                         <span>{{ user.username|upper }}</span>
                         {#									<p>1767 Messages</p>#}
                     </div>
-                    <div class="video_cam">
-                        <span><i class="fas fa-video"></i></span>
-                        <span><i class="fas fa-phone"></i></span>
-                    </div>
                 </div>
                 <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
             </div>
             <div class="card-body msg_card_body" id="messages">
                 {% for message in messages %}
-                    {% if message.sender.username != me.username %}
+                    {% if message.sender.username == me.username %}
                         <div class="d-flex justify-content-end mb-4">
                             <div class="msg_cotainer_send">
                                 {{ message }}
@@ -113,11 +68,11 @@
 
                 <form action="" method="post" id="form">
                     {% csrf_token %}
-                    <input name="message" class="form-control type_msg" placeholder="Type your message..." required>
-                    <div class="input-group-append">
-                        <button class="input-group-text send_btn" type="submit"><img
+                    <input name="message" class="type_msg" placeholder="Type your message..." required>
+                    <div class="inputt">
+                        <button class="send_btn" type="submit"><img
                                 src="https://sfarseniybucket.s3.amazonaws.com/static/send_80_w.png" alt=""
-                                style="width: 40px; height: 40px"></button>
+                                style="width: 48px; height: 58px"></button>
                     </div>
                 </form>
             </div>
@@ -153,7 +108,7 @@
             let sender1 = data.username
             let mes = ''
             console.log('{{ user.username|safe }}')
-            if (sender1 != '{{ user.username|safe }}') {
+            if (sender1 === '{{ user.username|safe }}') {
                 mes = `
                 <div class="d-flex justify-content-start mb-4">
                 <div class="img_cont_msg">
