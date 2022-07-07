@@ -2,18 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2f26040-f381-45ae-bbf1-80191b9e428e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myTube/templates/tube/videoDetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myTube/chat/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/chat/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myTube/static/styles/lobby.css" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/static/styles/lobby.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myTube/templates/chat/lobby.html" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/templates/chat/lobby.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myTube/templates/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/templates/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myTube/templates/tube/base.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myTube/templates/tube/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/templates/tube/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myTube/tube/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/tube/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myTube/tube/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/tube/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmpHTML.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tmpHTML.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../requirements.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,7 +100,7 @@
       <workItem from="1656403473895" duration="1197000" />
       <workItem from="1656496772743" duration="2675000" />
       <workItem from="1656747853977" duration="2799000" />
-      <workItem from="1657200192729" duration="6965000" />
+      <workItem from="1657200192729" duration="7148000" />
     </task>
     <servers />
   </component>
