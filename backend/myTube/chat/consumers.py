@@ -19,8 +19,6 @@ class ChatConsumer(WebsocketConsumer):
             self.channel_name
         )
 
-
-
         self.accept()
 
         self.send(text_data=json.dumps({
@@ -36,7 +34,7 @@ class ChatConsumer(WebsocketConsumer):
         message = text_data_json['message']
         username = self.scope['user'].username
         print(f'{self.channel_name} - Received message - {message}')
-        # self.store_messages(message)
+        self.store_messages(message)
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
             {
@@ -45,7 +43,6 @@ class ChatConsumer(WebsocketConsumer):
                 'username': username
             }
         )
-
 
     def chat_message(self, event):
         message = event['message']
@@ -57,7 +54,7 @@ class ChatConsumer(WebsocketConsumer):
             'username': username
         }))
 
-    def store_messages(self,message):
+    def store_messages(self, message):
         Message.objects.create(
             thread=self.thread_obj,
             text=message,

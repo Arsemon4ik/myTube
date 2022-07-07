@@ -1,17 +1,16 @@
 {% extends 'head.html' %}
 
-{#<div class="videos">#}
-    <!-- a video starts -->
+{% block content %}
 {% if videos %}
      {% for video in videos %}
         <div class="video">
             <div class="thumbnail">
-                <img src="{{ video.videoThumb }}" alt="video">
+                <img src="{{ video.videoThumb.url }}" alt="video">
             </div>
 
             <div class="details">
                 <div class="author">
-                    <img src=""
+                    <img src="{{ video.videoAuthor.authorName.avatar.url }}"
                          alt=""/>
                 </div>
                 <div class="title">
@@ -19,9 +18,9 @@
                         {{ video.videoHeader }}
                     </h3>
                     <a href="">
-                        Francesco Ciulla
+                        {{ video.videoAuthor.authorName|upper }}
                     </a>
-                    <span> 2M Views • 3 Months Ago </span>
+                    <span> {{ video.videoViews }} • 3 Months Ago </span>
                 </div>
             </div>
 
@@ -31,4 +30,4 @@
     <h1>No videos yet!</h1>
 {% endif %}
 
-{#</div>#}
+{% endblock %}

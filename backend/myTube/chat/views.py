@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.contrib.auth import get_user_model
 from django.shortcuts import Http404
-from chat.models import Thread, Message
+from .models import Thread, Message
 
 
 class ThreadView(View):
@@ -12,7 +12,7 @@ class ThreadView(View):
         return Thread.objects.by_user(self.request.user)
 
     def get_object(self):
-        other_username  = self.kwargs.get("username")
+        other_username = self.kwargs.get("username")
         self.other_user = get_user_model().objects.get(username=other_username)
         obj = Thread.objects.get_or_create_personal_thread(self.request.user, self.other_user)
         if obj == None:
@@ -37,8 +37,8 @@ class ThreadView(View):
         data = request.POST
         user = request.user
         text = data.get("message")
-        if (text == ''):
-            return render(request, self.template_name)
-        Message.objects.create(sender=user, thread=thread, text=text)
+        # if text == '':
+        #     return render(request, self.template_name)
+        # Message.objects.create(sender=user, thread=thread, text=text)
         context = self.get_context_data(**kwargs)
         return render(request, self.template_name, context=context)
