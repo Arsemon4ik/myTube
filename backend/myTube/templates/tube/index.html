@@ -6,23 +6,34 @@
             {% for video in videos %}
                 <div class="video">
                     <div class="thumbnail">
-                        <img src="{{ video.videoThumb.url }}" alt="video">
+                        <a href="{% url 'post_detail' video.id %}">
+                            <img src="{{ video.videoThumb.url }}" alt="video">
+                        </a>
                     </div>
 
                     <div class="details">
                         <div class="author">
-                            <a href="{% url 'chat' video.videoAuthor.authorName %}">
+                            {% if request.user.email != video.videoAuthor.authorName.email %}
+                                <a href="{% url 'chat' video.videoAuthor.authorName %}">
+                                    <img src="{{ video.videoAuthor.authorName.avatar.url }}"
+                                         alt=""/>
+                                </a>
+                            {% else %}
                                 <img src="{{ video.videoAuthor.authorName.avatar.url }}"
                                      alt=""/>
-                            </a>
+                            {% endif %}
                         </div>
                         <div class="title">
                             <h3>
                                 {{ video.videoHeader }}
                             </h3>
-                            <a href="{% url 'chat' video.videoAuthor.authorName %}">
-                                {{ video.videoAuthor.authorName|upper }}
-                            </a>
+                            {% if request.user.email != video.videoAuthor.authorName.email %}
+                                <a href="{% url 'chat' video.videoAuthor.authorName %}">
+                                    {{ video.videoAuthor.authorName|upper }}
+                                </a>
+                            {% else %}
+                                <a href="">{{ video.videoAuthor.authorName|upper }}</a>
+                            {% endif %}
                             <span> {{ video.videoViews }} • 3 Months Ago </span>
                         </div>
                     </div>

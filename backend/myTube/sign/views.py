@@ -33,10 +33,10 @@
 #             return Response(serializer.data, status=status.HTTP_201_CREATED)
 #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import redirect, render
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect, render
 
 from .forms import UserForm
 
@@ -46,6 +46,7 @@ def loginPage(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        phone = request.POST.get('phone')
         user = authenticate(request, username=username, password=password)
         print(user)
         if user is not None:

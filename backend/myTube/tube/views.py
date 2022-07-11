@@ -149,7 +149,7 @@ def postUpdatePage(request, pk):
 
 def postDetailPage(request, pk):
     video = Video.objects.get(id=pk)
-    comments = Comment.objects.filter(comment_post__id=video.id, comment_online=True)
+    comments = Comment.objects.filter(commentVideo__id=video.id)
     user = request.user
     if request.method == 'POST':
         if user.has_perm('tube.view_post'):

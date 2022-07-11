@@ -7,7 +7,11 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     phone = PhoneNumberField(blank=True)
     bio = models.TextField(blank=True, default='')
-    avatar = models.ImageField(default='static/default.jpg',upload_to='avatars', blank=True)
+    avatar = models.ImageField(default='static/default.jpg', upload_to='avatars', blank=True)
 
     REQUIRED_FIELDS = ['email']
+
     # REQUIRED_FIELDS = []
+
+    def __str__(self):
+        return self.username

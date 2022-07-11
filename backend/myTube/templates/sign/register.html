@@ -1,24 +1,23 @@
 {% extends "head.html" %}
-{% load crispy_forms_tags %}
 
 {% block content %}
 
-<div class="form-page">
-    <div class="form">
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        <form action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <button type="submit" class="btn btn-success">Зарегистрироваться</button>
-        </form>
+    <div class="form-page">
+        <div class="form">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" class="btn btn-success">Зарегистрироваться</button>
+            </form>
+        </div>
     </div>
-</div>
 
 
 {% endblock %}

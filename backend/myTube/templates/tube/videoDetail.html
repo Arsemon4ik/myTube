@@ -3,16 +3,17 @@
 {% block content %}
     <div class="pageVideo">
         {% if video %}
-            <div class="video">
+            <div class="videoPLayer">
                 <div class="thumbnail">
                     <video
-                            width="640"
-                            height="264"
-                            poster="{{ video.videoThumb.url }}"
-                            id="my-video"
-                            class="video-js"
+                            {#                            width="500px"#}
+                            {#                            height="500px"#}
+                            autoplay
+                            controls
+                            {#                            poster="{{ video.videoThumb.url }}"#}
+
                     >
-                        <source src="{{ video.videoSource.url }}" type="video/mp4"/>
+                        <source src="{{ video.videoSource.url }}" type="video/mp4">
                     </video>
                 </div>
 
