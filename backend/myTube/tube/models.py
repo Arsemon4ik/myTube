@@ -19,8 +19,10 @@ class Video(models.Model):
     videoDisLikes = models.IntegerField(default=0)
     videoViews = models.IntegerField(default=0)
     videoThumb = models.ImageField(upload_to='thumbnail', null=True)
+    videoUsersLiked = models.ManyToManyField(User, related_name='UsersLiked')
+    videoUsersDisLiked = models.ManyToManyField(User, related_name='UsersDisliked')
 
-    # videoDate = models.DateTimeField(auto_now_add=True)
+    videoDate = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     def __str__(self):
         return f'{self.videoTitle}'

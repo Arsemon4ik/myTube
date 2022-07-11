@@ -117,8 +117,16 @@ input:focus {
     text-decoration: none;
 }
 
+.description {
+    margin: 0 40px;
+}
+
+.description a {
+    margin: 0 10px;
+}
+
 #my-video {
-    width: 70vw;
+    width: 400px;
 }
 
 .pageVideo {

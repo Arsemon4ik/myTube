@@ -67,16 +67,45 @@ def indexPage(request):
 
 
 def postLikePage(request, pk):
+    user = request.user
     try:
-        post = Video.objects.get(id=pk)
-        post.like()
-        post.save()
-        return redirect('post_detail', pk=post.id)
+        video = Video.objects.get(id=pk)
+        if user in video.videoUsersLiked.all():
+            messages.error(request, 'You have already liked this video!')
+            return redirect('post_detail', pk=video.id)
+        else:
+            video.videoUsersLiked.add(user)
+        video.like()
+        video.save()
+        return redirect('post_detail', pk=video.id)
     except:
+        video = Video.objects.get(id=pk)
         messages.error(request, 'Something wrong with post')
+        return redirect('post_detail', pk=video.id)
 
     context = {}
-    return render(request, 'tube/post_like.html', context)
+    return render(request, 'tube/videoDetail.html', context)
+
+
+def postDisLikePage(request, pk):
+    user = request.user
+    try:
+        video = Video.objects.get(id=pk)
+        if user in video.videoUsersDisLiked.all():
+            messages.error(request, 'You have already disliked this video!')
+            return redirect('post_detail', pk=video.id)
+        else:
+            video.videoUsersDisLiked.add(user)
+        video.dislike()
+        video.save()
+        return redirect('post_detail', pk=video.id)
+    except:
+        video = Video.objects.get(id=pk)
+        messages.error(request, 'Something wrong with post')
+        return redirect('post_detail', pk=video.id)
+
+    context = {}
+    return render(request, 'tube/videoDetail.html', context)
 
 
 def authorPage(request):

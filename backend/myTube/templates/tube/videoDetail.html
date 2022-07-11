@@ -6,8 +6,9 @@
             <div class="videoPLayer">
                 <div class="thumbnail">
                     <video
-                            {#                            width="500px"#}
-                            {#                            height="500px"#}
+                            width="780px"
+                            height="500px"
+                            aspect-ratio="16/9"
                             autoplay
                             controls
                             {#                            poster="{{ video.videoThumb.url }}"#}
@@ -17,23 +18,50 @@
                     </video>
                 </div>
 
-                <div class="details">
-                    <div class="author">
-                        <img src="{{ video.videoAuthor.authorName.avatar.url }}"
-                             alt=""/>
+                <div style="display: flex; align-items: center; margin: 0 20px">
+                    <div class="details">
+                        <div class="author">
+                            {% if request.user.email != video.videoAuthor.authorName.email %}
+                                <a href="{% url 'chat' video.videoAuthor.authorName %}">
+                                    <img src="{{ video.videoAuthor.authorName.avatar.url }}"
+                                         alt=""/>
+                                </a>
+                            {% else %}
+                                <img src="{{ video.videoAuthor.authorName.avatar.url }}"
+                                     alt=""/>
+                            {% endif %}
+
+                        </div>
+                        <div class="title">
+                            <h3>
+                                {{ video.videoHeader }}
+                            </h3>
+                            {% if request.user.email != video.videoAuthor.authorName.email %}
+                                <a href="{% url 'chat' video.videoAuthor.authorName %}">
+                                    {{ video.videoAuthor.authorName|upper }}
+                                </a>
+                            {% else %}
+                                <a href="">{{ video.videoAuthor.authorName|upper }}</a>
+                            {% endif %}
+                            <span> {{ video.videoViews }} • 3 Months Ago </span>
+                        </div>
                     </div>
-                    <div class="title">
-                        <h3>
-                            {{ video.videoHeader }}
-                        </h3>
-                        <a href="">
-                            {{ video.videoAuthor.authorName|upper }}
-                        </a>
-                        <span> {{ video.videoViews }} • 3 Months Ago </span>
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <div class="description">
+                        <a href="{% url 'post_like' video.id %}" class="btn btn-primary">Лайк {{ video.videoLikes }}</a>
+                        <a href="{% url 'post_dislike' video.id %}"
+                           class="btn btn-primary">Дизлайк {{ video.videoDisLikes }}</a>
                     </div>
                 </div>
 
             </div>
+
         {% else %}
             <h1>No videos yet!</h1>
         {% endif %}

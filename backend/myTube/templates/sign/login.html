@@ -7,11 +7,11 @@
             <div class="form">
                 {% if messages %}
                     <ul class="messages">
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
                 {% endif %}
-                </ul>
                 <div class="centered">
                     <form action="" method="post" class="centered">
                         {% csrf_token %}
