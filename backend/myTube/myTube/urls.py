@@ -23,10 +23,13 @@ from rest_framework_swagger.views import get_swagger_view
 schema_view = get_swagger_view(title='myTube API')
 
 urlpatterns = [
-                  path('admin/', admin.site.urls),
-                  path('tube/', include('tube.urls')),
-                  path('sign/', include('sign.urls')),
-                  path('accounts/', include('allauth.urls')),
-                  path('chat/', include('chat.urls')),
-                  re_path(r'^swagger$', schema_view)
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('admin/', admin.site.urls),
+    path('tube/', include('tube.urls')),
+    path('sign/', include('sign.urls')),
+    path('accounts/', include('allauth.urls')),
+    path('chat/', include('chat.urls')),
+    path('', include('pwa.urls')),
+
+    re_path(r'^webpush/', include('webpush.urls')),
+    re_path(r'^swagger$', schema_view)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

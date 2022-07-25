@@ -83,8 +83,7 @@ def postLikePage(request, pk):
         messages.error(request, 'Something wrong with post')
         return redirect('post_detail', pk=video.id)
 
-    context = {}
-    return render(request, 'tube/videoDetail.html', context)
+    return render(request, 'tube/videoDetail.html', {})
 
 
 def postDisLikePage(request, pk):

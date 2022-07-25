@@ -2,17 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2f26040-f381-45ae-bbf1-80191b9e428e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/myTube/tube/management/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myTube/tube/management/commands/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myTube/tube/management/commands/nulllikes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myTube/sign/functions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myTube/templates/sign/mail/send_congr.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myTube/static/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/static/styles/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myTube/templates/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/templates/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myTube/templates/sign/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/templates/sign/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myTube/templates/tube/videoDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/templates/tube/videoDetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myTube/tube/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/tube/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myTube/tube/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/tube/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myTube/tube/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/tube/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myTube/myTube/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/myTube/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myTube/myTube/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/myTube/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myTube/sign/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/sign/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myTube/sign/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/myTube/sign/signals.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,23 +47,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/miste/myTube/backend/myTube/management/commands",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "actions.on.save"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/miste/myTube/backend/myTube/management/commands&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\miste\myTube\backend\myTube\management\commands" />
@@ -110,7 +106,8 @@
       <workItem from="1656496772743" duration="2675000" />
       <workItem from="1656747853977" duration="2799000" />
       <workItem from="1657200192729" duration="7148000" />
-      <workItem from="1657531978494" duration="14260000" />
+      <workItem from="1657531978494" duration="14344000" />
+      <workItem from="1657615842521" duration="6608000" />
     </task>
     <servers />
   </component>

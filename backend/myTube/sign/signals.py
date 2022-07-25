@@ -1,21 +1,16 @@
-from decouple import config
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from twilio.rest import Client
 
+from .functions import send_congratulations_by_mail, send_congratulations_by_phone
 from .models import User
 
-# @receiver(post_save, sender=User)
-# def sendMessageRegisteredUser(sender, **kwargs):
-#     if sender and sender.phone:
-#         account_sid = config('TWILIO_ACCOUNT_SID')
-#         auth_token = config('TWILIO_AUTH_TOKEN')
-#
-#         client = Client(account_sid, auth_token)
-#
-#         message = client.messages \
-#             .create(
-#             body=f"Добро пожаловать на сайт myTube! Хлапец",
-#             from_=config('TWILIO_NUMBER'),
-#             to=sender.phone
-#         )
+
+@receiver(post_save, sender=User)
+def sendMessageRegisteredUser(sender, instance, created, **kwargs):
+    if created:
+        if instance.phone:
+            print(instance.phone, instance.email)
+            send_congratulations_by_phone(instance.phone, instance.username)
+
+        if instance.email:
+            send_congratulations_by_mail(instance.email, instance.username)
