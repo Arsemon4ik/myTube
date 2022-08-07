@@ -1,13 +1,13 @@
 {% extends 'head.html' %}
 
 {% block content %}
-    <div class="videos">
+    <div class="videos row g-3 text-center">
         {% if videos %}
             {% for video in videos %}
-                <div class="video">
+                <div class="video col">
                     <div class="thumbnail">
                         <a href="{% url 'post_detail' video.id %}">
-                            <img src="{{ video.videoThumb.url }}" alt="video">
+                            <img src="{{ video.videoThumb.url }}" alt="video" class="img-fluid">
                         </a>
                     </div>
 

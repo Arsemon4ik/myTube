@@ -58,10 +58,19 @@ from .filters import VideoFilter
 # Create your views here.
 from .forms import *
 from .models import Comment
+from django.db.models import Q
 
 
 def indexPage(request):
-    videos = Video.objects.all()
+
+    queryDict = request.GET
+    query = queryDict.get('q')
+    if query is not None:
+        videos = Video.objects.filter(
+            Q(videoHeader__icontains=query)
+        )
+    else:
+        videos = Video.objects.all()
     context = {'videos': videos}
     return render(request, 'tube/index.html', context)
 

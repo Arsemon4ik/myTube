@@ -20,36 +20,75 @@
 </head>
 <body>
 <header>
-    <div class="logo left">
-        <a href="{% url 'home' %}">
-            <img src="https://sfarseniybucket.s3.amazonaws.com/static/logo.png" style="width: 115px" alt="logo">
-        </a>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class="logo left">
+                    <a href="{% url 'home' %}">
+                        <img src="https://sfarseniybucket.s3.amazonaws.com/static/logo.png" style="width: 115px"
+                             alt="logo">
+                    </a>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Для вас</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Подписки</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' %}">
+                            <i class="material-icons display-this"
+                               style="position: relative; top: 8px">account_circle</i>
+                        </a>
+                    </li>
 
-    <div class="search center">
-        <form action="">
-            <input type="text" placeholder="Search"/>
-            <button><i class="material-icons">search</i></button>
-        </form>
-        <i class="material-icons mic">mic</i>
-    </div>
+                    <form class="d-flex" action="" method="get">
+                        <div class="search center d-flex gap-0">
+                            <input class="form-control me-2" type="text" placeholder="Search" name="q"/>
+                            <button type="submit"><i class="material-icons">search</i></button>
+                        </div>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {#    <div class="logo left">#}
+    {#        <a href="{% url 'home' %}">#}
+    {#            <img src="https://sfarseniybucket.s3.amazonaws.com/static/logo.png" style="width: 115px" alt="logo">#}
+    {#        </a>#}
+    {#    </div>#}
 
-    <div class="icons right">
-        {#        <i class="material-icons">videocam</i>#}
-        {#        <i class="material-icons">apps</i>#}
-        {#        <i class="material-icons">notifications</i>#}
-        <a href="" class="btn btn-primary">Для вас</a>
-        <a href="" class="btn btn-primary">Подписки</a>
-        <a href="{% url 'profile' %}">
-            <i class="material-icons display-this" style="position: relative; top: 8px">account_circle</i>
-        </a>
-    </div>
+    {#    <div class="search center">#}
+    {#        <form action="" method="get">#}
+    {#            <input type="text" placeholder="Search" name="q"/>#}
+    {#            <button type="submit"><i class="material-icons">search</i></button>#}
+    {#        </form>#}
+    {#        <i class="material-icons mic">mic</i>#}
+    {#    </div>#}
+
+    {#    <div class="icons right">#}
+    {#        <a href="" class="btn btn-primary">Для вас</a>#}
+    {#        <a href="" class="btn btn-primary">Подписки</a>#}
+    {#        <a href="{% url 'profile' %}">#}
+    {#            <i class="material-icons display-this" style="position: relative; top: 8px">account_circle</i>#}
+    {#        </a>#}
+    {#    </div>#}
 </header>
 
 <div class="content">
-    {% block content %}
-        {{ flatpage.content }}
-    {% endblock content %}
+    <div class="container">
+        {% block content %}
+            {{ flatpage.content }}
+        {% endblock content %}
+    </div>
 </div>
 
 
