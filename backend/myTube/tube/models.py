@@ -1,9 +1,9 @@
 from django.db import models
-from sign.models import User
+from django.conf import settings
 
 
 class Author(models.Model):
-    authorName = models.OneToOneField(User, max_length=64, on_delete=models.CASCADE, related_name='author')
+    authorName = models.OneToOneField(settings.AUTH_USER_MODEL, max_length=64, on_delete=models.CASCADE, related_name='author')
     authorBlocked = models.BooleanField(default=False, blank=True)
 
     def __str__(self):
@@ -19,8 +19,8 @@ class Video(models.Model):
     videoDisLikes = models.IntegerField(default=0)
     videoViews = models.IntegerField(default=0)
     videoThumb = models.ImageField(upload_to='thumbnail', null=True)
-    videoUsersLiked = models.ManyToManyField(User, related_name='UsersLiked')
-    videoUsersDisLiked = models.ManyToManyField(User, related_name='UsersDisliked')
+    videoUsersLiked = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='UsersLiked')
+    videoUsersDisLiked = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='UsersDisliked')
 
     videoDate = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
@@ -42,7 +42,7 @@ class Video(models.Model):
 
 class Comment(models.Model):
     commentVideo = models.ForeignKey(Video, on_delete=models.CASCADE)
-    commentUser = models.ForeignKey(User, on_delete=models.CASCADE)
+    commentUser = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     commentText = models.CharField(max_length=64)
     commentDateTime = models.DateTimeField(auto_now_add=True)
     commentRating = models.IntegerField(default=0)
@@ -56,5 +56,5 @@ class Comment(models.Model):
 
 
 class Subscribe(models.Model):
-    subscribeUser = models.ForeignKey(User, on_delete=models.CASCADE)
+    subscribeUser = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     subscribeChannel = models.ForeignKey(Author, on_delete=models.CASCADE)

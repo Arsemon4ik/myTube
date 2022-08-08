@@ -57,8 +57,10 @@ from django.shortcuts import render, redirect
 from .filters import VideoFilter
 # Create your views here.
 from .forms import *
-from .models import Comment
+from .models import Comment, Subscribe, Author
+from django.conf import settings
 from django.db.models import Q
+from sign.models import User
 
 
 def indexPage(request):
@@ -188,6 +190,11 @@ def postDetailPage(request, pk):
     video = Video.objects.get(id=pk)
     comments = Comment.objects.filter(commentVideo__id=video.id)
     user = request.user
+    author = Author.objects.get(authorName=video.videoAuthor.authorName)
+
+    subscription = user.subscriptions.all()
+    isSubscribeToChannelOfVideo = author.authorName in subscription
+    print(isSubscribeToChannelOfVideo)
     if request.method == 'POST':
         if user.has_perm('tube.view_post'):
             comment = request.POST.get('text')
@@ -196,5 +203,45 @@ def postDetailPage(request, pk):
         else:
             messages.error("You don't have permission!")
 
-    context = {'comments': comments, 'video': video}
+    context = {'comments': comments, 'video': video, 'subscribe':isSubscribeToChannelOfVideo}
     return render(request, 'tube/videoDetail.html', context)
+
+
+def subscribeVideos(request):
+    user = request.user
+    subscription = user.subscriptions.all()
+    if subscription:
+        videos = Video.objects.filter(videoAuthor__authorName__in=subscription)
+    else:
+        videos = ''
+
+    context = {'videos':videos}
+    # context = {}
+    return render(request, 'tube/index.html', context)
+
+
+def subscribeToChannel(request, channel):
+    author = User.objects.get(email=channel)
+    user = request.user
+    subscription = user.subscriptions.all()
+    if user not in subscription:
+        user.subscriptions.add(author)
+        user.save()
+        return redirect('home')
+    else:
+        print(subscription)
+        return redirect('home')
+
+    return render(request, 'tube/index.html', {})
+
+
+def unSubscribeToChannel(request, channel):
+    author = User.objects.get(email=channel)
+    user = request.user
+    subscription = user.subscriptions.all()
+    print(subscription)
+    if author in subscription:
+        user.subscriptions.remove(author)
+        print('success')
+        return redirect('home')
+    return render(request, 'tube/index.html', {})

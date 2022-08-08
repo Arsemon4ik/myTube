@@ -57,6 +57,14 @@
                         <a href="{% url 'post_like' video.id %}" class="btn btn-primary">Лайк {{ video.videoLikes }}</a>
                         <a href="{% url 'post_dislike' video.id %}"
                            class="btn btn-primary">Дизлайк {{ video.videoDisLikes }}</a>
+                        {% if request.user != video.videoAuthor.authorName and not subscribe %}
+                            <a class="btn btn-success" href="{% url 'subscribe' video.videoAuthor.authorName %}">Subscribe</a>
+
+
+                        {% elif request.user != video.videoAuthor.authorName %}
+                            <a class="btn btn-danger" href="{% url 'unsubscribe' video.videoAuthor.authorName %}">Unsubscribe</a>
+
+                        {% endif %}
                     </div>
                 </div>
 

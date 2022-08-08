@@ -3,7 +3,6 @@
 {% block content %}
 
 {% if request.user %}
-  <div class="content">
     <div class="profile-info">
       <div class="avatar">
             <img src="{{request.user.avatar.url}}" alt="">
@@ -13,10 +12,9 @@
         <h3>{{request.user.email}}</h3>
       </div>
     </div>
-    <div class="link">
+    <div class="link d-flex justify-content-center">
         <a href="{% url 'logout' %}" class="btn btn-primary my-2" >Выйти из системы</a>
     </div>
-  </div>
 
   {% endif %}
 {% endblock %}

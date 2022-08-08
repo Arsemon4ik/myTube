@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="icon" href="{% static 'images/fav.png' %}" type="image/png">
+
     <!-- CSS File -->
     <link rel="stylesheet" href="{% static 'styles/style.css' %}"/>
     <link rel="stylesheet" href="{% static 'styles/auth.css' %}"/>
@@ -25,7 +27,7 @@
             <a class="navbar-brand" href="#">
                 <div class="logo left">
                     <a href="{% url 'home' %}">
-                        <img src="https://sfarseniybucket.s3.amazonaws.com/static/logo.png" style="width: 115px"
+                        <img src="{% static 'images/logo.png' %}" style="width: 115px"
                              alt="logo">
                     </a>
                 </div>
@@ -38,25 +40,24 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Для вас</a>
+                        <a class="nav-link" href="{% url 'home' %}">For you</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Подписки</a>
+                        <a class="nav-link" href="{% url 'subscription' %}">Subscription</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'profile' %}">
-                            <i class="material-icons display-this"
-                               style="position: relative; top: 8px">account_circle</i>
-                        </a>
+                        <a class="nav-link" href="{% url 'profile' %}">Profile</a>
                     </li>
 
-                    <form class="d-flex" action="" method="get">
-                        <div class="search center d-flex gap-0">
-                            <input class="form-control me-2" type="text" placeholder="Search" name="q"/>
-                            <button type="submit"><i class="material-icons">search</i></button>
-                        </div>
-                    </form>
+
                 </ul>
+
+                <form class="d-flex justify-content-center gap-0" action="" method="get">
+                    <div class="search center d-flex gap-0">
+                        <input class="form-control" type="text" placeholder="Search" name="q"/>
+                        <button type="submit"><i class="material-icons">search</i></button>
+                    </div>
+                </form>
             </div>
         </div>
     </nav>
